@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Paking_SlotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="user_role">
+    <Key>
+      <PropertyRef Name="user_name" />
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="user_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_name" />
+    </Key>
+    <Property Name="user_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Salt" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PasswordHash" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityContainer Name="Paking_SlotEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="roles" EntityType="Self.role" />
+    <EntitySet Name="user_role" EntityType="Self.user_role" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <FunctionImport Name="sp_LaneOneForSimplifiedInterface" ReturnType="Collection(Paking_SlotModel.sp_LaneOneForSimplifiedInterface_Result)">
+      <Parameter Name="LoginID" Mode="In" Type="Int32" />
+      <Parameter Name="PlateNumber" Mode="In" Type="String" />
+      <Parameter Name="CardNo" Mode="In" Type="String" />
+      <Parameter Name="CheckTime" Mode="In" Type="DateTime" />
+      <Parameter Name="isLaneIn" Mode="In" Type="String" />
+      <Parameter Name="isActionCancelCard" Mode="In" Type="String" />
+      <Parameter Name="PlateNumber_Image" Mode="In" Type="String" />
+      <Parameter Name="Check_Image" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_laneIn">
+      <Parameter Name="LoginID" Mode="In" Type="Int32" />
+      <Parameter Name="PlateNumber" Mode="In" Type="String" />
+      <Parameter Name="CardNo" Mode="In" Type="String" />
+      <Parameter Name="CheckTime" Mode="In" Type="DateTime" />
+      <Parameter Name="CustomerName" Mode="InOut" Type="String" />
+      <Parameter Name="Message" Mode="InOut" Type="String" />
+      <Parameter Name="PlateNum" Mode="InOut" Type="String" />
+      <Parameter Name="total_Amount" Mode="InOut" Type="String" />
+      <Parameter Name="Time" Mode="InOut" Type="String" />
+      <Parameter Name="LanceTye" Mode="InOut" Type="String" />
+      <Parameter Name="PhotoCustomerIn" Mode="InOut" Type="String" />
+      <Parameter Name="PhotoLicensePlateNumberIN" Mode="InOut" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_LaneOneForSimplifiedInterface_Result">
+    <Property Type="Int32" Name="CustomerName" Nullable="true" />
+    <Property Type="String" Name="Message" Nullable="false" MaxLength="29" />
+    <Property Type="Int32" Name="PlateNum" Nullable="true" />
+    <Property Type="Int32" Name="totalAmount" Nullable="true" />
+    <Property Type="Int32" Name="Time" Nullable="true" />
+    <Property Type="Int32" Name="LanceTye" Nullable="true" />
+    <Property Type="Int32" Name="PhotoFront" Nullable="true" />
+    <Property Type="Int32" Name="PhotoAfter" Nullable="true" />
+    <Property Type="String" Name="ThongBao" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="BienSo" Nullable="false" MaxLength="7" />
+    <Property Type="String" Name="GiaTien" Nullable="false" MaxLength="8" />
+    <Property Type="String" Name="ThoiGian" Nullable="false" MaxLength="9" />
+    <Property Type="String" Name="Lan" Nullable="false" MaxLength="3" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Paking_SlotModelStoreContainer" CdmEntityContainer="Paking_SlotEntities">
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="Paking_SlotModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_role">
+      <EntityTypeMapping TypeName="Paking_SlotModel.user_role">
+        <MappingFragment StoreEntitySet="user_role">
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="Paking_SlotModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_LaneOneForSimplifiedInterface" FunctionName="Paking_SlotModel.Store.sp_LaneOneForSimplifiedInterface">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Paking_SlotModel.sp_LaneOneForSimplifiedInterface_Result">
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="PlateNum" ColumnName="PlateNum" />
+          <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="LanceTye" ColumnName="LanceTye" />
+          <ScalarProperty Name="PhotoFront" ColumnName="PhotoFront" />
+          <ScalarProperty Name="PhotoAfter" ColumnName="PhotoAfter" />
+          <ScalarProperty Name="ThongBao" ColumnName="ThongBao" />
+          <ScalarProperty Name="BienSo" ColumnName="BienSo" />
+          <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="Lan" ColumnName="Lan" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_laneIn" FunctionName="Paking_SlotModel.Store.sp_laneIn" />
+  </EntityContainerMapping>
+</Mapping>
